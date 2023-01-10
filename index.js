@@ -6,3 +6,6 @@ const fs = require('fs')
 const Engineer = require("./lib/Engineer");
 const Manager = require("./lib/Manager.js");
 const Intern = require("./lib/Intern");
+
+
+// Create the initial header
