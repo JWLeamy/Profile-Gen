@@ -45,6 +45,29 @@ function memberinfo() {
     .then((answers) => {addedinfo(answers)})
 }
 
+const inserthtml = (constructor) => {
+    return new Promise(function () {
+        const name = constructor.getName();
+        const role = constructor.getRole();
+        const id = constructor.getId();
+        const email = constructor.getEmail();
+        const officeNumber = constructor.getOfficeNumber();
+        const school = constructor.getSchool();
+        const GitHub = constructor.getGithub()
+        let content = "";
+
+        if (role = "Intern") {
+
+        }
+        else if (role = "Engineer") {
+
+        }
+        else if (role = "Manager") {
+
+        }
+    }
+    )    
+}
 // ---- The first half of this function identifies what type of additonial information is needed (based of the type of team member chosen in the prompt) -----
 // ---- The second half of this function takes all the information gathered and applies it to an HTML layout (which will later be added to the final html file)-----
 // ---- (Sidenote: both the addedinfo() and memberinfo() coincide with one another) -----
@@ -55,7 +78,7 @@ const addedinfo = ({role, name, id, email}) => {
     } else if (role === "Engineer") {
         neededinfo = "What is your Engineer's GitHub username?"
     } else if (role === "Manager") {
-        neededinfo = "What is your Engineer's office number?"
+        neededinfo = "What is your Manager's office number?"
     }
     inquirer.prompt([{
         message: `${neededinfo}`,
