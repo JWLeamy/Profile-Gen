@@ -10,7 +10,7 @@ const { listenerCount } = require('process');
 
 
 // ---- Primary Function that prompts users with questions to obtain team member information -----
-function getMembers() {
+function memberinfo() {
     inquirer
       .prompt([
         {
@@ -46,7 +46,8 @@ function getMembers() {
 
 // ---- The first half of this function identifies what type of additonial information is needed (based of the type of team member chosen in the prompt) -----
 // ---- The second half of this function takes all the information gathered and applies it to an HTML layout (which will later be added to the final html file)-----
-findinfo = ({role, name, id, email}) => {
+// ---- (Sidenote: both the addedinfo() and memberinfo() coincide with one another) -----
+const addedinfo = ({role, name, id, email}) => {
     let neededinfo = '';
     if (role === "Intern") {
         neededinfo = "Where did your Intern go to school?"
@@ -67,7 +68,17 @@ findinfo = ({role, name, id, email}) => {
     .then( 
         function({neededinfo, addmember}) {
             let memberinformation = '';
-            
+            if (role === "Intern") {
+                memberinformation = new Intern(name, id, email, neededinfo)
+            }
+            else if (role === "Engineer") {
+                memberinformation = new Engineer(name, id, email, neededinfo)
+            }
+            else if (role === "Manager") {
+                memberinformation = new Manager(name, id, email, neededinfo)
+            }
+
+
         }
 
     )
