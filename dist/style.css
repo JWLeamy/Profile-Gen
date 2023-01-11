@@ -1,0 +1,41 @@
+
+* {
+    box-sizing: border-box;
+
+}
+
+.title {
+    text-align: center; 
+    background-color:rgb(232,71,88);
+    color: white;
+    padding: 3%;
+
+}
+
+.list-group {
+    padding: 6%;
+    background-color: rgb(246,247,249);
+}
+
+header {
+    background-color: rgb(0,119,247);
+    color: white;
+    text-align: center;
+}
+
+.card-columns {
+    column-count: 3;
+}
+  
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.card {
+    box-shadow: 5px 10px lightgrey;
+}
+
+.fa {
+    size: 20px;
+    color: yellow;
+}

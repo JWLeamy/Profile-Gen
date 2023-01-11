@@ -42,12 +42,15 @@ function memberinfo() {
   
         }
     ])
-    .then((answers) => {addedinfo(answers)})
+    .then((answers) => {
+        //adds info to the index.html file
+        addedinfo(answers);
+    })
 }
 
 // ---- After retrieving all neccesary information through memberinfo() and addedinfo(), we use this function (inserthtml) to add the data to an html format in a newly created file -----
 const inserthtml = (constructor) => {
-    return new Promise(function () {
+    {
         const name = constructor.getName();
         const role = constructor.getRole();
         const id = constructor.getId();
@@ -108,8 +111,49 @@ const inserthtml = (constructor) => {
         }
         fs.appendFileSync("./dist/index.html", content)
     }
-    )    
 }
+
+// ---- Function that sets up the head and body of the index.html file
+const createhtml = () => {
+    let openingtag = `
+    <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+                integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+                crossorigin="anonymous"></script>
+            <link rel="stylesheet" href="style.css">
+            <script src="https://kit.fontawesome.com/bf37de4bfe.js" crossorigin="anonymous"></script>
+            <title>My Team Generator</title>
+        </head>
+        <body>
+            <h1 class="title">My Team</h1>
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-3">
+    `;
+    fs.writeFileSync("./dist/index.html", openingtag);
+}
+
+// ---- Function that closed the html file and adds a footer to the bottom
+const finish = () => {
+    let closingtag = `
+                </div>
+            </div>
+        </body>
+    </html>`;
+    fs.appendFileSync("./dist/index.html", closingtag);
+    
+
+}
+
 // ---- The first half of this function identifies what type of additonial information is needed (based of the type of team member chosen in the prompt) -----
 // ---- The second half of this function takes all the information gathered and applies it to an HTML layout (which will later be added to the final html file)-----
 // ---- (Sidenote: both the addedinfo() and memberinfo() coincide with one another) -----
@@ -135,22 +179,28 @@ const addedinfo = ({role, name, id, email}) => {
         function({neededinfo, addmember}) {
             let memberinformation = '';
             if (role === "Intern") {
-                memberinformation = new Intern(name, id, email, neededinfo)
+                memberinformation = new Intern(name, id, email, neededinfo);
             }
             else if (role === "Engineer") {
-                memberinformation = new Engineer(name, id, email, neededinfo)
+                memberinformation = new Engineer(name, id, email, neededinfo);
             }
             else if (role === "Manager") {
-                memberinformation = new Manager(name, id, email, neededinfo)
+                memberinformation = new Manager(name, id, email, neededinfo);
             }
             else {
                 console.log('shit')
             }
+            
+            
             if (addmember === "Yes") {
+                inserthtml(memberinformation);
                 memberinfo()
+            } else {
+                inserthtml(memberinformation)
+                finish()
             }
 
-            inserthtml(memberinformation);
+            ;
 
         }
 
@@ -158,4 +208,10 @@ const addedinfo = ({role, name, id, email}) => {
 
 }
 
-memberinfo()
+// --- Final function that puts everything together -----
+const finale = () => {
+    createhtml();
+    memberinfo();
+}
+
+finale()
