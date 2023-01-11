@@ -43,8 +43,9 @@ function getMembers() {
     ])
 }
 
-// ---- Function to Declare what type of additonial information needed (based of the type of team member chosen in the prompt) -----
-findinfo = (role) => {
+// ---- The first half of this function identifies what type of additonial information is needed (based of the type of team member chosen in the prompt) -----
+// ---- The second half of this function takes all the information gathered and applies it to an HTML layout (which will later be added to the final html file)-----
+findinfo = ({role, name, id, email}) => {
     let neededinfo = '';
     if (role === "Intern") {
         neededinfo = "Where did your Intern go to school?"
@@ -55,3 +56,4 @@ findinfo = (role) => {
     }
 }
 
+getMembers()
