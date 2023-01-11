@@ -52,11 +52,11 @@ const inserthtml = (constructor) => {
         const role = constructor.getRole();
         const id = constructor.getId();
         const email = constructor.getEmail();
-        const officeNumber = constructor.getOfficeNumber();
-        const school = constructor.getSchool();
-        const GitHub = constructor.getGithub();
+
         let content = ``;
-        if (role = "Intern") {
+
+        if (role === "Intern") {
+            const school = constructor.getSchool();
             content = `
             <div class="col mb-4">
                 <div class="card h-100">   
@@ -72,7 +72,8 @@ const inserthtml = (constructor) => {
                 </div>
             </div>`;
         }
-        else if (role = "Engineer") {
+        else if (role === "Engineer") {
+            const GitHub = constructor.getGithub();
             content = `
             <div class="col mb-4">
                 <div class="card h-100">
@@ -88,7 +89,8 @@ const inserthtml = (constructor) => {
                 </div>
             </div>`;
         }
-        else if (role = "Manager") {
+        else if (role === "Manager") {
+            const officeNumber = constructor.getOfficeNumber();
             content = `
             <div class="col mb-4">
                 <div class="card h-100">
