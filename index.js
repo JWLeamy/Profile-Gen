@@ -42,6 +42,7 @@ function memberinfo() {
   
         }
     ])
+    .then((answers) => {addedinfo(answers)})
 }
 
 // ---- The first half of this function identifies what type of additonial information is needed (based of the type of team member chosen in the prompt) -----
@@ -77,9 +78,16 @@ const addedinfo = ({role, name, id, email}) => {
             else if (role === "Manager") {
                 memberinformation = new Manager(name, id, email, neededinfo)
             }
-
+            else {
+                console.log('shit')
+            }
+            if (addmember === "Yes") {
+                memberinfo()
+            }
 
         }
 
     )
 }
+
+memberinfo()
