@@ -6,6 +6,7 @@ const fs = require('fs')
 const Engineer = require("./lib/Engineer");
 const Manager = require("./lib/Manager");
 const Intern = require("./lib/Intern");
+const { listenerCount } = require('process');
 
 
 // ---- Primary Function that prompts users with questions to obtain team member information -----
@@ -54,6 +55,20 @@ findinfo = ({role, name, id, email}) => {
     } else if (role === "Manager") {
         neededinfo = "What is your Engineer's office number?"
     }
-}
+    inquirer.prompt([{
+        message: `${neededinfo}`,
+        name: 'needinfo',
+    }, {
+        type: 'list',
+        message: 'Would you like to add an additional team member?',
+        choices: ["Yes", "No"],
+        name: 'addmember'
+    }])
+    .then( 
+        function({neededinfo, addmember}) {
+            let memberinformation = '';
+            
+        }
 
-getMembers()
+    )
+}
