@@ -44,6 +44,14 @@ function getMembers() {
 }
 
 // ---- Function to Declare what type of additonial information needed (based of the type of team member chosen in the prompt) -----
-findinfo = () => {
-    
+findinfo = (role) => {
+    let neededinfo = '';
+    if (role === "Intern") {
+        neededinfo = "Where did your Intern go to school?"
+    } else if (role === "Engineer") {
+        neededinfo = "What is your Engineer's GitHub username?"
+    } else if (role === "Manager") {
+        neededinfo = "What is your Engineer's office number?"
+    }
 }
+
