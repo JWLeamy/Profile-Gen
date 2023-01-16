@@ -69,7 +69,7 @@ const inserthtml = (constructor) => {
                     </header>    
                     <ul class="list-group">
                         <li class="list-group-item">ID: ${id}</li>
-                        <li class="list-group-item">Email Address: ${email}</li>
+                        <li class="list-group-item">Email Address: <a href = "mailto: ${email}">${email}</a></li>
                         <li class="list-group-item">School: ${school}</li>              
                     </ul>
                 </div>
@@ -81,13 +81,13 @@ const inserthtml = (constructor) => {
             <div class="col mb-4">
                 <div class="card h-100">
                     <header>
-                        <h3 id="name">${name}</h3><i class="fa fa-coffee"></i>
+                        <h3 id="name">${name}</h3><i class="fa fa-desktop"></i>
                         <h3 id="position">${role}</h3>
                     </header>
                     <ul class="list-group">
                         <li class="list-group-item">ID: ${id}</li>
-                        <li class="list-group-item">Email Address: ${email}</li>
-                        <li class="list-group-item">GitHub: ${GitHub}</li>         
+                        <li class="list-group-item">Email Address: <a href = "mailto: ${email}">${email}</a></li>
+                        <li class="list-group-item">GitHub: <a href="https://github.com/${GitHub}">${GitHub}</a></li>         
                     </ul>
                 </div>
             </div>`;
@@ -98,12 +98,12 @@ const inserthtml = (constructor) => {
             <div class="col mb-4">
                 <div class="card h-100">
                     <header>
-                        <h3 id="name">${name}</h3><i class="fa fa-coffee"></i>
+                        <h3 id="name">${name}</h3><i class="fa fa-people-roof"></i>
                         <h3 id="position">${role}</h3>
                     </header>
                     <ul class="list-group">
                         <li class="list-group-item">ID: ${id}</li>
-                        <li class="list-group-item">Email: ${email}</li>
+                        <li class="list-group-item">Email: <a href = "mailto: ${email}">${email}</a></li>
                         <li class="list-group-item">Office number:  ${officeNumber}</li>
                     </ul>
                 </div>
@@ -168,7 +168,7 @@ const addedinfo = ({role, name, id, email}) => {
     }
     inquirer.prompt([{
         message: `${neededinfo}`,
-        name: 'needinfo',
+        name: 'neededinfo',
     }, {
         type: 'list',
         message: 'Would you like to add an additional team member?',
@@ -197,6 +197,7 @@ const addedinfo = ({role, name, id, email}) => {
                 memberinfo()
             } else {
                 inserthtml(memberinformation)
+                console.log("Your new page has been created!");
                 finish()
             }
 
