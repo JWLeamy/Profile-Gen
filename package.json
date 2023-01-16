@@ -1,5 +1,14 @@
 {
   "dependencies": {
     "inquire": "^0.4.8"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.9.0"
   }
+  
 }
