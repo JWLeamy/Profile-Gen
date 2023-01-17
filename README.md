@@ -1,6 +1,10 @@
 # Profile-Gen
+A Node.js command line application that creates a custom Index.html holding general information about a company's employee's.
+
 
 [Untitled_ Jan 16, 2023 3_46 PM.webm](https://user-images.githubusercontent.com/111401066/212783713-a4ddedc9-4f16-480a-b9f5-91f8799ab1b3.webm)
+
+![Index.html file created](./src/Profile%20Gen.png)
 
 ```
 AS A manager
