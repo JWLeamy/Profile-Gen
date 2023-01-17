@@ -1,4 +1,7 @@
 # Profile-Gen
+
+[Untitled_ Jan 16, 2023 3_46 PM.webm](https://user-images.githubusercontent.com/111401066/212783713-a4ddedc9-4f16-480a-b9f5-91f8799ab1b3.webm)
+
 ```
 AS A manager
 I WANT to generate a webpage that displays my team's basic info
