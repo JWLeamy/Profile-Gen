@@ -37,7 +37,7 @@ Javascript, HTML, CSS
 Node.js, Jest
 
 ## Code Snippet
-Primary index.js -
+Primary index.js -c
 ```
 // Install packages needed for this application
 const inquirer = require('inquirer')
